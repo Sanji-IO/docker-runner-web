@@ -10,6 +10,7 @@ RUN dpkg --add-architecture i386 && \
 	zlib1g:i386 \
 	build-essential \
 	ruby-dev \
+	libicu-dev \
 	libssl-dev \
     libpng-dev \
     git \
