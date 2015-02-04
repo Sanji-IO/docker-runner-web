@@ -13,6 +13,7 @@ RUN dpkg --add-architecture i386 && \
 	libicu-dev \
 	libssl-dev \
     libpng-dev \
+    debhelper \
     git \
     curl && \
     rm -rf /var/lib/apt/lists/* # 20150202
