@@ -14,6 +14,7 @@ RUN dpkg --add-architecture i386 && \
 	libssl-dev \
     libpng-dev \
     debhelper \
+    fakeroot \
     git \
     curl && \
     rm -rf /var/lib/apt/lists/* # 20150202
