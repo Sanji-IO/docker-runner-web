@@ -32,5 +32,4 @@ RUN bash -c "su - gitlab_ci_runner -c /app/setup/node"
 RUN bash -c "rm /bin/sh && ln -s /bin/bash /bin/sh"
 
 # Install slackpost
-RUN chmod +x /app/bin/slackpost && \
-    ln -s /app/bin/slackpost /bin/slackpost
+RUN ln -s /app/bin/slackpost /bin/slackpost

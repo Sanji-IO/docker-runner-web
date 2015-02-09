@@ -1,38 +1,26 @@
 #!/bin/bash
  
-# Usage: slackpost <token> <channel> <message>
+# Usage: slackpost <webhook> <message>
+
+webhook=$1
  
-# Enter the name of your slack host here - the thing that appears in your URL:
-# https://slackhost.slack.com/
-slackhost=$SLACK_HOST
- 
-token=$1
- 
-if [[ $token == "" ]]
+if [[ $webhook == "" ]]
 then
-        echo "No token specified"
-        exit 1
-fi
- 
-shift
-channel=$1
-if [[ $channel == "" ]]
-then
-        echo "No channel specified"
+        echo "No webhook specified"
         exit 1
 fi
  
 shift
  
-text=$*
+message=$*
  
-if [[ $text == "" ]]
+if [[ $message == "" ]]
 then
-        echo "No text specified"
+        echo "No message specified"
         exit 1
 fi
  
-escapedText=$(echo $text | sed 's/"/\"/g' | sed "s/'/\'/g" )
-json="{\"channel\": \"#$channel\", \"text\": \"$escapedText\"}"
+escapedText=$(echo $message | sed 's/"/\"/g' | sed "s/'/\'/g" )
+json="{\"text\": \"$escapedText\"}"
  
-curl -s -d "payload=$json" "https://$slackhost.slack.com/services/hooks/incoming-webhook?token=$token"
+curl -s -d "payload=$json" $webhook
